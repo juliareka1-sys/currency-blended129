@@ -5,6 +5,7 @@ import Container from '@/components/Container/Container';
 import Heading from '@/components/Heading/Heading';
 
 import css from './page.module.css';
+import ExchangeForm from '@/components/ExchangeForm/ExchangeForm';
 
 export default function Home() {
   const isError = false;
@@ -13,6 +14,7 @@ export default function Home() {
     <main className={css.main}>
       <Section>
         <Container>
+          <ExchangeForm />
           <Heading info title="What currencies do you want to exchange?🙂" />
 
           {isError && (

@@ -7,10 +7,30 @@ const instance = axios.create({
   headers: { apikey: apiKey ?? '' },
 });
 
-export const exchangeCurrency = async (credentials) => {
+interface CredentialsProps {
+  to: string;
+  from: string;
+  amount: number;
+}
+
+interface ExchangeInfo {
+  to: string;
+  from: string;
+  amount: number;
+  rate: number;
+  result: number;
+}
+
+interface Response {
+ query: ExchangeInfo,
+ info: {rate: number},
+ result: number
+}
+
+export const exchangeCurrency = async (credentials: CredentialsProps): Promise<ExchangeInfo> => {
   const {
     data: { query, info, result },
-  } = await instance.get('/convert', {
+  } = await instance.get<Response>('/convert', {
     params: credentials,
   });
 
