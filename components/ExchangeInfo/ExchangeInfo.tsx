@@ -1,6 +1,14 @@
 import styles from './ExchangeInfo.module.css';
 
-export default function ExchangeInfo({ amount, from, to, rate, result }) {
+interface ExchangeInfoProps {
+  amount: number;
+  from: string;
+  to: string;
+  rate: number;
+  result: number;
+}
+
+export default function ExchangeInfo({ amount, from, to, rate, result }: ExchangeInfoProps) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.box}>
@@ -12,7 +20,7 @@ export default function ExchangeInfo({ amount, from, to, rate, result }) {
 
         <p className={styles.details}>
           at the rate of
-          <span className={styles.accent}> {rate}</span>
+          <span className={styles.accent}> {rate.toFixed(2)}</span>
         </p>
 
         <p className={styles.title}>
